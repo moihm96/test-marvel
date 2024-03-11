@@ -1,7 +1,7 @@
-import { FavouriteIcon } from "@/assets/FavouriteIcon";
-import { MarveLogo } from "@/assets/MarveLogo";
+import { FavouriteIcon } from '@/assets/FavouriteIcon';
+import { MarveLogo } from '@/assets/MarveLogo';
 
-import styles from "./header.module.css";
+import styles from './header.module.css';
 
 export const Header = () => (
   <div className={styles.container}>

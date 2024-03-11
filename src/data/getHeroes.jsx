@@ -1,30 +1,28 @@
-import { MD5 } from "crypto-js";
+import { MD5 } from 'crypto-js';
 
 const API_URL = process.env.MARVEL_APP_BASE_URL;
 
 export const fetchHeroes = async () => {
   let ts = new Date().getTime();
-  let apiKey = process.env.MARVEL_APP_API_KEY ?? "";
-  let privateKey = process.env.MARVEL_APP_PRIVATE_KEY ?? "";
+  let apiKey = process.env.MARVEL_APP_API_KEY ?? '';
+  let privateKey = process.env.MARVEL_APP_PRIVATE_KEY ?? '';
   let stringToHash = ts + privateKey + apiKey;
   let hash = MD5(stringToHash);
-  let baseUrl = "https://gateway.marvel.com:443/v1/public/characters";
+  let baseUrl = 'https://gateway.marvel.com:443/v1/public/characters';
   let limit = 50;
   let url =
     baseUrl +
-    "?limit=" +
+    '?limit=' +
     limit +
-    "&ts=" +
+    '&ts=' +
     ts +
-    "&apikey=" +
+    '&apikey=' +
     apiKey +
-    "&hash=" +
+    '&hash=' +
     hash;
 
-    let response = await fetch(url);
-    let data = await response.json();
+  let response = await fetch(url);
+  let data = await response.json();
 
-    return data.data.results;
-
-
+  return data.data.results;
 };

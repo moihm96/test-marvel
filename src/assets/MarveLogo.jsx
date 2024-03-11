@@ -24,4 +24,4 @@ export const MarveLogo = () => (
       </clipPath>
     </defs>
   </svg>
-)
+);

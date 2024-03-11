@@ -1,7 +1,7 @@
-"use-client";
-import styles from "./heroesCard.module.css";
+'use-client';
+import styles from './heroesCard.module.css';
 
-import { SmallFavIconOn } from "@/assets/SmallFavIconOn";
+import { SmallFavIconOn } from '@/assets/SmallFavIconOn';
 
 export const HeroesCard = ({ hero }) => {
   return (
