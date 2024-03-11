@@ -23,7 +23,6 @@ export const fetchHeroes = async () => {
 
     let response = await fetch(url);
     let data = await response.json();
-    console.log(data.data.results);
 
     return data.data.results;
 
