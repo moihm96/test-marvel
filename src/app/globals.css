@@ -1,3 +1,8 @@
 body {
   margin:0;
 }
+
+input{
+  border: none;
+  min-width:80%;
+}
