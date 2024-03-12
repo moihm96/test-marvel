@@ -11,4 +11,10 @@
       }
     }
   }
+
+  .favTitle{
+    text-transform: uppercase;
+    margin-left: 3rem;
+    margin-top: 3rem;
+  }
   

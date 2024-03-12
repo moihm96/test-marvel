@@ -28,5 +28,10 @@
   padding-bottom: 8px;
   @media screen and (max-width: 900px) {
     max-width: 140.5px;
+  }
 }
+
+.favButton{
+  background-color: transparent;
+  border: none;
 }

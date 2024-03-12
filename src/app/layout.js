@@ -1,17 +1,18 @@
-import { SearchBar } from '@/components/SearchBar';
 import './globals.css';
 import { Header } from '@/components/Header';
 import { CountWrapper } from '@/context/countContext';
+import { FavoriteWrapper } from '@/context/favoriteContext';
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <CountWrapper>
-          <Header />
-          <SearchBar />
-          {children}
-        </CountWrapper>
+        <FavoriteWrapper>
+          <CountWrapper>
+            <Header />
+            {children}
+          </CountWrapper>
+        </FavoriteWrapper>
       </body>
     </html>
   );
