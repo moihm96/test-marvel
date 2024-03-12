@@ -1,17 +1,18 @@
-'use-client';
-import { useState } from 'react';
-import styles from './charactersCard.module.css';
+'use client';
 
-import { SmallFavIconOn } from '@/assets/SmallFavIconOn';
+import Comic from './Comic';
+import { useState } from 'react';
+import styles from './characterCard.module.css';
 import { SmallFavIconOff } from '@/assets/SmallFavIconOff';
+import { SmallFavIconOn } from '@/assets/SmallFavIconOn';
 import { useFavoriteContext } from '@/context/favoriteContext';
-import Link from 'next/link';
 import { isAlreadyFavorite } from '@/app/utils/help';
 
-export const CharactersCard = ({ character }) => {
+const CharacterCard = ({ character, comics }) => {
   const { favorites, setFavorites } = useFavoriteContext();
 
   const isJustFavorite = isAlreadyFavorite(favorites, character);
+
   const [isFavorite, setIsFavorite] = useState(isJustFavorite);
 
   const addFavorites = () => {
@@ -28,24 +29,34 @@ export const CharactersCard = ({ character }) => {
   };
 
   return (
-    <div key={character.id} className={styles.container}>
-      <div className={styles.imageContainer}>
-        <Link href={`character/${character.id}`}>
+    <div>
+      <div className={styles.characterContainer}>
+        <div className={styles.imageContainer}>
           <img
             src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
             alt={character.name}
-            width="188"
-            height="190"
+            width="320"
+            height="320"
             className={styles.responsiveImage}
           />
-        </Link>
+        </div>
+        <div className={styles.characterInfo}>
+          <div className={styles.nameContainer}>
+            <p className={styles.name}>{character.name}</p>
+            <button className={styles.favButton} onClick={addFavorites}>
+              {isFavorite ? <SmallFavIconOn /> : <SmallFavIconOff />}
+            </button>
+          </div>
+          <p>{character.description}</p>
+        </div>
       </div>
-      <div className={styles.cardFooter}>
-        <p>{character.name}</p>
-        <button className={styles.favButton} onClick={addFavorites}>
-          {isFavorite ? <SmallFavIconOn /> : <SmallFavIconOff />}
-        </button>
+      <div className={styles.comicsContainer}>
+        {comics.map((comic) => (
+          <Comic key={comic.id} comic={comic} />
+        ))}
       </div>
     </div>
   );
 };
+
+export default CharacterCard;

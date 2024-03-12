@@ -27,3 +27,17 @@ export const searchCharacters = async (querySearch) => {
 
   return { characters: data.data.results, count: data.data.count };
 };
+
+export const fetchCharacter = async (id) => {
+  const url = `${API_URL}/characters/${id}?${query}`;
+
+  const responseCharacter = await fetch(url);
+  const character = await responseCharacter.json();
+
+  const urlComic = `${API_URL}/characters/${id}/comics?limit=20&${query}`;
+
+  const responseComics = await fetch(urlComic);
+  const comics = await responseComics.json();
+
+  return { character: character.data.results[0], comics: comics.data.results };
+};
