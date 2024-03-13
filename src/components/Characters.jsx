@@ -1,13 +1,13 @@
 'use client';
 import { useCountContext } from '@/context/countContext';
-import styles from './character.module.css';
+import styles from './characters.module.css';
 
 import { CharactersCard } from '@/components/CharactersCard';
 import { useEffect } from 'react';
 import { SearchBar } from './SearchBar';
 const favoriteUrl = '/favorites';
 
-const Character = ({ characters, count, pathName }) => {
+const Characters = ({ characters, count, pathName }) => {
   const { setCount } = useCountContext();
 
   const isFavoritePage = pathName == favoriteUrl;
@@ -29,4 +29,4 @@ const Character = ({ characters, count, pathName }) => {
   );
 };
 
-export default Character;
+export default Characters;

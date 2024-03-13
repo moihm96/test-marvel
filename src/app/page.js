@@ -1,7 +1,7 @@
-import Character from '@/components/Character';
+import Characters from '@/components/Characters';
 import { fetchCharacters } from '@/data/api';
 
 export default async function Home() {
   const { characters, count } = await fetchCharacters();
-  return <Character characters={characters} count={count} />;
+  return <Characters characters={characters} count={count} />;
 }

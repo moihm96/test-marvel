@@ -1,14 +1,14 @@
 'use client';
 
 import { useFavoriteContext } from '@/context/favoriteContext';
-import Character from '@/components/Character';
+import Characters from '@/components/Characters';
 import { usePathname } from 'next/navigation';
 
 const FavoritePage = () => {
   const { favorites } = useFavoriteContext();
   const pathName = usePathname();
   return (
-    <Character
+    <Characters
       characters={favorites}
       count={favorites.length}
       pathName={pathName}
