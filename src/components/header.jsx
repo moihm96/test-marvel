@@ -14,6 +14,8 @@ export const Header = () => {
   useEffect(() => {
     if (favorites && favorites.length > 0) {
       setNumberOfFavorites(favorites.length);
+    } else if (favorites.length == 0) {
+      setNumberOfFavorites(0);
     }
   }, [favorites, setNumberOfFavorites]);
 

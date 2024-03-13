@@ -1,30 +1,31 @@
 'use client';
 
+import { useState, useEffect } from 'react';
+
 import Comic from './Comic';
-import { useState } from 'react';
 import styles from './characterCard.module.css';
 import { SmallFavIconOff } from '@/assets/SmallFavIconOff';
 import { SmallFavIconOn } from '@/assets/SmallFavIconOn';
 import { useFavoriteContext } from '@/context/favoriteContext';
-import { isAlreadyFavorite } from '@/app/utils/help';
 
 const CharacterCard = ({ character, comics }) => {
-  const { favorites, setFavorites } = useFavoriteContext();
+  const { favorites, addFavorite, removeFavorite } = useFavoriteContext();
 
-  const isJustFavorite = isAlreadyFavorite(favorites, character);
+  const [isFavorite, setIsFavorite] = useState(
+    favorites.find((favorite) => favorite.id == character.id) != undefined,
+  );
 
-  const [isFavorite, setIsFavorite] = useState(isJustFavorite);
+  useEffect(() => {
+    setIsFavorite(
+      favorites.find((favorite) => favorite.id == character.id) != undefined,
+    );
+  }, [favorites, character]);
 
-  const addFavorites = () => {
-    if (isFavorite == false) {
-      setFavorites([...favorites, character]);
-      setIsFavorite(!isFavorite);
+  const handleFavorites = () => {
+    if (isFavorite) {
+      removeFavorite(character.id);
     } else {
-      const favoritesAfterRemoved = favorites.filter((favorite) => {
-        return favorite.id != character.id;
-      });
-      setFavorites(favoritesAfterRemoved);
-      setIsFavorite(!isFavorite);
+      addFavorite(character);
     }
   };
 
@@ -43,7 +44,7 @@ const CharacterCard = ({ character, comics }) => {
         <div className={styles.characterInfo}>
           <div className={styles.nameContainer}>
             <p className={styles.name}>{character.name}</p>
-            <button className={styles.favButton} onClick={addFavorites}>
+            <button className={styles.favButton} onClick={handleFavorites}>
               {isFavorite ? <SmallFavIconOn /> : <SmallFavIconOff />}
             </button>
           </div>
