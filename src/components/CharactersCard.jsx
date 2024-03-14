@@ -29,7 +29,7 @@ export const CharactersCard = ({ character }) => {
   return (
     <div key={character.id} className={styles.container}>
       <div className={styles.imageContainer}>
-        <Link href={`character/${character.id}`}>
+        <Link href={`/character/${character.id}`}>
           <img
             src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
             alt={character.name}
