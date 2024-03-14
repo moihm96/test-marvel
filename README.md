@@ -26,3 +26,7 @@ Besides we create severals folders: - assets folder: for all images - components
 We have the jest, prettier, next and js configuration files.
 
 And our .env file which contains all the necessary variables
+
+### DEPLOY APPLICATION
+
+I just have deploy the application with vercel if you want to visit the page, hte url is : `https://test-marvel.vercel.app/`
